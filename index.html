@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>墨望行銷 Mowang | 驅動傳統產業數位轉型的 AI 科技顧問</title>
+    <meta name="description" content="專注於傳統產業數位轉型的 AI 科技顧問公司。協助企業透過 AI、ERP、品牌策略與數據分析，打造可持續成長的商業模式。">
+    
+    <!-- Fonts: Inter for English/Numbers, Noto Sans TC for Chinese -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for brand and action icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- Phosphor Icons for premium minimal icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- Tailwind CSS with custom configuration -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'Noto Sans TC', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#0071e3',
+                        secondary: '#6e6e73',
+                        accent: '#30d158',
+                        surface: '#f5f5f7',
+                        'dark-gray': '#1d1d1f',
+                        'light-gray': '#86868b'
+                    },
+                    animation: {
+                        'aurora-1': 'aurora 20s linear infinite',
+                        'aurora-2': 'aurora 25s linear infinite reverse',
+                        'data-flow-y': 'flowY 8s linear infinite',
+                        'data-flow-x': 'flowX 12s linear infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        aurora: {
+                            '0%, 100%': { transform: 'translate(0, 0) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                        },
+                        flowY: {
+                            '0%': { transform: 'translateY(-100%)' },
+                            '100%': { transform: 'translateY(100vh)' },
+                        },
+                        flowX: {
+                            '0%': { transform: 'translateX(-100%)' },
+                            '100%': { transform: 'translateX(100vw)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Base Configuration & Premium Typography */
+        body {
+            background-color: #f5f5f7;
+            color: #1d1d1f;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Glassmorphism Utilities */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.65);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 4px 30px rgba(37, 99, 235, 0.05);
+        }
+        
+        .glass-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.5));
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 10px 40px -10px rgba(0,0,0,0.05);
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px -10px rgba(37, 99, 235, 0.15);
+            border: 1px solid rgba(37, 99, 235, 0.2);
+        }
+
+        /* Gradient Text */
+        .text-gradient {
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-image: linear-gradient(90deg, #0071e3, #6e6e73);
+        }
+
+        /* Noise Texture Overlay */
+        .bg-noise {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 50;
+            opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        /* Grid Background */
+        .bg-grid {
+            background-image: linear-gradient(to right, rgba(0,0,0,0.03) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(0,0,0,0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+        }
+
+        /* Scroll Reveal Animations (Vanilla JS hooks) */
+        .reveal-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .delay-100 { transition-delay: 100ms; }
+        .delay-200 { transition-delay: 200ms; }
+        .delay-300 { transition-delay: 300ms; }
+
+        /* Typewriter Cursor */
+        .typewriter-cursor {
+            display: inline-block;
+            width: 2px;
+            height: 1em;
+            background-color: #0071e3;
+            animation: blink 1s step-end infinite;
+            vertical-align: middle;
+            margin-left: 4px;
+        }
+        @keyframes blink { 50% { opacity: 0; } }
+
+        /* Custom CTA Button Container for Status Hover */
+        .cta-btn-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 9999px;
+            display: inline-flex;
+        }
+        
+        /* Aurora Effects */
+        .aurora-blur {
+            filter: blur(100px);
+            opacity: 0.4;
+        }
+
+        /* Hide scrollbar for clean horizontal scroll areas if any */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="relative antialiased selection:bg-primary/20 selection:text-primary">
+
+    <!-- Global Background Elements -->
+    <div class="bg-noise"></div>
+    <div class="fixed inset-0 bg-grid z-[-2] pointer-events-none opacity-50"></div>
+    <canvas id="networkCanvas" class="fixed inset-0 z-[-1] pointer-events-none opacity-[0.8]"></canvas>
+    
+    <!-- Ambient Light/Aurora -->
+    <div class="fixed top-[-10%] left-[-10%] w-[50vw] h-[50vh] bg-blue-300 rounded-full mix-blend-multiply aurora-blur animate-aurora-1 z-[-2]"></div>
+    <div class="fixed top-[20%] right-[-10%] w-[40vw] h-[60vh] bg-purple-300 rounded-full mix-blend-multiply aurora-blur animate-aurora-2 z-[-2]"></div>
+
+    <!-- Data Flow Lines -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none z-[-1] opacity-20">
+        <div class="absolute left-[20%] top-0 w-[1px] h-[100px] bg-gradient-to-b from-transparent via-blue-500 to-transparent animate-data-flow-y delay-100"></div>
+        <div class="absolute left-[60%] top-0 w-[1px] h-[150px] bg-gradient-to-b from-transparent via-purple-500 to-transparent animate-data-flow-y delay-300" style="animation-duration: 6s;"></div>
+        <div class="absolute left-[80%] top-0 w-[1px] h-[80px] bg-gradient-to-b from-transparent via-emerald-400 to-transparent animate-data-flow-y delay-500" style="animation-duration: 9s;"></div>
+    </div>
+
+    <!-- Navigation -->
+    <header id="navbar" class="fixed w-full top-0 z-40 transition-all duration-300 pt-6 pb-4">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <nav class="glass-panel rounded-full px-6 py-3 flex items-center justify-between transition-shadow duration-300" id="nav-container">
+                <!-- Logo -->
+                <a href="#" class="flex items-center gap-2 group">
+                    <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-primary/20 group-hover:scale-105 transition-transform">
+                        M
+                    </div>
+                    <span class="font-bold text-lg tracking-wider text-dark-gray">墨望行銷</span>
+                </a>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center gap-8 text-sm font-medium text-light-gray">
+                    <a href="#why-us" class="hover:text-primary transition-colors">關於我們</a>
+                    <a href="#services" class="hover:text-primary transition-colors">服務項目</a>
+                    <a href="#kmos" class="hover:text-primary transition-colors">KMOS 系統</a>
+                    <a href="#cases" class="hover:text-primary transition-colors">成功案例</a>
+                </div>
+
+                <!-- Desktop CTA -->
+                <div class="hidden md:block">
+                    <a href="https://calendar.app.google/6yYzpBV9ucwPVd788" target="_blank" class="group cta-btn-container bg-dark-gray text-white px-6 py-2.5 text-sm font-medium shadow-xl shadow-dark-gray/10 hover:shadow-primary/30 transition-all duration-300 border border-transparent hover:border-primary/50">
+                        <span class="relative flex flex-col justify-center items-center h-5 overflow-hidden">
+                            <span class="transition-transform duration-300 group-hover:-translate-y-8">預約諮詢</span>
+                            <span class="absolute text-emerald-400 flex items-center gap-1.5 translate-y-8 group-hover:translate-y-0 transition-transform duration-300 font-semibold tracking-wide text-xs">
+                                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                                隨時為您服務
+                            </span>
+                        </span>
+                    </a>
+                </div>
+
+                <!-- Mobile Hamburger -->
+                <button id="mobile-menu-btn" class="md:hidden text-dark-gray focus:outline-none p-2">
+                    <i class="ph ph-list text-2xl" id="menu-icon"></i>
+                </button>
+            </nav>
+        </div>
+        
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="absolute top-full left-0 w-full px-6 pt-2 pb-6 opacity-0 pointer-events-none transition-all duration-300 -translate-y-4">
+            <div class="glass-panel rounded-3xl p-6 flex flex-col gap-4">
+                <a href="#why-us" class="mobile-link text-lg font-medium text-dark-gray hover:text-primary">關於我們</a>
+                <a href="#services" class="mobile-link text-lg font-medium text-dark-gray hover:text-primary">服務項目</a>
+                <a href="#kmos" class="mobile-link text-lg font-medium text-dark-gray hover:text-primary">KMOS 系統</a>
+                <a href="#cases" class="mobile-link text-lg font-medium text-dark-gray hover:text-primary">成功案例</a>
+                <hr class="border-gray-200">
+                <a href="https://calendar.app.google/6yYzpBV9ucwPVd788" target="_blank" class="bg-primary text-white text-center py-3 rounded-xl font-medium shadow-lg shadow-primary/20">立即預約顧問</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 1. Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 text-center z-10 w-full">
+            
+            <!-- Floating Badge -->
+            <div class="reveal-up inline-flex items-center gap-2 px-4 py-2 rounded-full glass-panel mb-8 border border-white/80 shadow-sm">
+                <span class="relative flex h-2 w-2">
+                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                  <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                </span>
+                <span class="text-xs font-semibold tracking-wider text-light-gray uppercase">AI 優先的科技轉型夥伴</span>
+            </div>
+
+            <!-- Typewriter Heading -->
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-dark-gray leading-tight md:leading-[1.15] mb-8 min-h-[60px] md:min-h-[80px]">
+                <span id="hero-typewriter"></span><span class="typewriter-cursor"></span>
+            </h1>
+
+            <!-- Brand Subtitle -->
+            <p class="reveal-up delay-200 mt-6 text-lg md:text-xl text-light-gray max-w-2xl mx-auto font-medium leading-relaxed">
+                我們不僅提供頂尖的 AI 與系統技術，更專注於商業價值的落地。<br class="hidden md:block">
+                用科技賦能品牌，打造可持續成長的企業護城河。
+            </p>
+
+            <!-- CTA Area -->
+            <div class="reveal-up delay-300 mt-12 flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="https://calendar.app.google/6yYzpBV9ucwPVd788" target="_blank" class="group relative overflow-hidden bg-primary text-white rounded-full px-8 py-4 text-lg font-medium shadow-xl shadow-primary/20 hover:shadow-primary/40 transition-all duration-300 w-full sm:w-auto text-center border border-primary/50">
+                    <span class="absolute inset-0 w-full h-full bg-gradient-to-r from-primary via-secondary to-primary opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0"></span>
+                    <span class="relative z-10 flex flex-col justify-center items-center h-6 overflow-hidden">
+                        <span class="transition-transform duration-300 group-hover:-translate-y-8">立即預約顧問</span>
+                        <span class="absolute text-white flex items-center gap-2 translate-y-8 group-hover:translate-y-0 transition-transform duration-300 font-semibold tracking-wide text-sm">
+                            <i class="ph ph-sparkle"></i>
+                            狀態：隨時為您服務
+                        </span>
+                    </span>
+                </a>
+                <a href="#services" class="group flex items-center gap-2 text-dark-gray hover:text-primary px-8 py-4 font-medium transition-colors">
+                    探索解決方案
+                    <i class="ph ph-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-50 animate-bounce">
+            <span class="text-xs uppercase tracking-widest text-light-gray font-semibold">往下探索</span>
+            <div class="w-[1px] h-8 bg-dark-gray"></div>
+        </div>
+    </section>
+
+    <!-- 2. Why Us & 3. About -->
+    <section id="why-us" class="py-24 md:py-32 relative z-10">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                
+                <!-- Left: Content -->
+                <div class="reveal-up">
+                    <h2 class="text-sm font-bold tracking-widest text-primary uppercase mb-4">關於墨望</h2>
+                    <h3 class="text-3xl md:text-5xl font-bold text-dark-gray mb-6 leading-tight">
+                        專注於傳統產業<br>數位轉型的<span class="text-gradient">幕後推手</span>
+                    </h3>
+                    <p class="text-light-gray text-lg leading-relaxed mb-8">
+                        墨望行銷是一間專注於企業數位轉型的 AI 科技顧問公司。我們深知傳統產業在數位浪潮中面臨的痛點。因此，我們透過整合 AI 技術、客製化 ERP 系統與品牌策略，協助企業打破資訊孤島。
+                    </p>
+                    
+                    <div class="grid grid-cols-2 gap-8">
+                        <div class="border-l-2 border-primary/20 pl-4 hover:border-primary transition-colors">
+                            <h4 class="text-3xl font-bold text-dark-gray mb-1">Data</h4>
+                            <p class="text-sm text-light-gray">數據驅動決策</p>
+                        </div>
+                        <div class="border-l-2 border-secondary/20 pl-4 hover:border-secondary transition-colors">
+                            <h4 class="text-3xl font-bold text-dark-gray mb-1">AI</h4>
+                            <p class="text-sm text-light-gray">AI 賦能營運</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Visual -->
+                <div class="reveal-up delay-200 relative lg:h-[600px] flex items-center justify-center">
+                    <div class="absolute inset-0 bg-gradient-to-tr from-primary/10 to-secondary/10 rounded-[40px] rotate-3 scale-105 blur-lg"></div>
+                    <div class="relative w-full h-full glass-card rounded-[32px] p-8 md:p-12 flex flex-col justify-center gap-8 overflow-hidden">
+                        <!-- Abstract UI Elements simulating dashboard/tech -->
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary">
+                                <i class="ph ph-chart-line-up text-2xl"></i>
+                            </div>
+                            <div>
+                                <div class="text-xs text-light-gray font-semibold uppercase tracking-wider mb-1">長期商業價值成長</div>
+                                <div class="w-32 h-2 bg-gray-100 rounded-full overflow-hidden">
+                                    <div class="w-full h-full bg-gradient-to-r from-primary to-secondary"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="p-6 rounded-2xl bg-white/50 border border-white/80 shadow-sm backdrop-blur-md">
+                            <p class="text-lg font-medium text-dark-gray mb-4">"讓每一次轉型，都創造真正的商業價值。"</p>
+                            <div class="flex items-center gap-3">
+                                <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-gray-200 to-gray-300"></div>
+                                <div>
+                                    <div class="text-sm font-bold text-dark-gray">墨望品牌願景</div>
+                                    <div class="text-xs text-light-gray">引領企業數位轉型</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Floating decorative node -->
+                        <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-accent/10 rounded-full blur-2xl animate-pulse-slow"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Core Values -->
+    <section class="py-24 relative border-t border-gray-100 bg-surface/50">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-16 reveal-up">
+                <h2 class="text-sm font-bold tracking-widest text-primary uppercase mb-4">核心價值</h2>
+                <h3 class="text-3xl md:text-4xl font-bold text-dark-gray">我們的核心理念</h3>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Value 1 -->
+                <div class="reveal-up glass-card p-8 rounded-3xl group">
+                    <div class="w-14 h-14 rounded-2xl bg-blue-50 flex items-center justify-center text-blue-600 mb-6 group-hover:scale-110 transition-transform duration-500">
+                        <i class="ph ph-database text-3xl"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-dark-gray mb-3">數據驅動</h4>
+                    <p class="text-sm text-light-gray leading-relaxed">告別憑感覺決策，建立完善的數據追蹤基礎，讓每一個商業決策都有所依據。</p>
+                </div>
+                <!-- Value 2 -->
+                <div class="reveal-up delay-100 glass-card p-8 rounded-3xl group">
+                    <div class="w-14 h-14 rounded-2xl bg-purple-50 flex items-center justify-center text-purple-600 mb-6 group-hover:scale-110 transition-transform duration-500">
+                        <i class="ph ph-brain text-3xl"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-dark-gray mb-3">AI 優先</h4>
+                    <p class="text-sm text-light-gray leading-relaxed">導入生成式 AI 與自動化工具，提升團隊協作效率，降低繁瑣的營運成本。</p>
+                </div>
+                <!-- Value 3 -->
+                <div class="reveal-up delay-200 glass-card p-8 rounded-3xl group">
+                    <div class="w-14 h-14 rounded-2xl bg-emerald-50 flex items-center justify-center text-emerald-600 mb-6 group-hover:scale-110 transition-transform duration-500">
+                        <i class="ph ph-target text-3xl"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-dark-gray mb-3">務實落地</h4>
+                    <p class="text-sm text-light-gray leading-relaxed">提供務實且可執行的落地方案，不談空泛理論，專注於解決企業真實痛點。</p>
+                </div>
+                <!-- Value 4 -->
+                <div class="reveal-up delay-300 glass-card p-8 rounded-3xl group">
+                    <div class="w-14 h-14 rounded-2xl bg-orange-50 flex items-center justify-center text-orange-600 mb-6 group-hover:scale-110 transition-transform duration-500">
+                        <i class="ph ph-trend-up text-3xl"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-dark-gray mb-3">長效成長</h4>
+                    <p class="text-sm text-light-gray leading-relaxed">從長期視角規劃品牌藍圖，陪伴企業建立永續經營的商業模式與護城河。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Services -->
+    <section id="services" class="py-32 relative z-10">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-20 reveal-up">
+                <h2 class="text-sm font-bold tracking-widest text-primary uppercase mb-4">專業服務</h2>
+                <h3 class="text-4xl md:text-5xl font-bold text-dark-gray mb-6">全方位的數位轉型服務</h3>
+                <p class="text-light-gray text-lg max-w-2xl mx-auto">以科技為核心，策略為導向，提供企業從管理到行銷的一站式解決方案。</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service Card 1 -->
+                <div class="reveal-up relative p-[1px] rounded-3xl bg-gradient-to-b from-gray-200 to-gray-50 overflow-hidden group hover:shadow-2xl hover:shadow-primary/10 transition-all duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-br from-primary to-secondary opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="relative h-full bg-white/90 backdrop-blur-xl rounded-[23px] p-8 flex flex-col z-10">
+                        <div class="w-12 h-12 rounded-full bg-gray-100 group-hover:bg-primary/10 flex items-center justify-center text-dark-gray group-hover:text-primary transition-colors mb-6">
+                            <i class="ph ph-squares-four text-2xl"></i>
+                        </div>
+                        <h4 class="text-2xl font-bold text-dark-gray mb-4">五金客製化 KMOS ERP</h4>
+                        <p class="text-light-gray mb-8 flex-grow">專為五金與製造業量身打造的雲端 ERP，打通庫存、進銷存與生產數據，實現管理智慧化。</p>
+                        <a href="#kmos" class="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-secondary transition-colors mt-auto">
+                            了解系統架構 <i class="ph ph-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Service Card 2 -->
+                <div class="reveal-up delay-100 relative p-[1px] rounded-3xl bg-gradient-to-b from-gray-200 to-gray-50 overflow-hidden group hover:shadow-2xl hover:shadow-secondary/10 transition-all duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-br from-secondary to-accent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="relative h-full bg-white/90 backdrop-blur-xl rounded-[23px] p-8 flex flex-col z-10">
+                        <div class="w-12 h-12 rounded-full bg-gray-100 group-hover:bg-secondary/10 flex items-center justify-center text-dark-gray group-hover:text-secondary transition-colors mb-6">
+                            <i class="ph ph-megaphone text-2xl"></i>
+                        </div>
+                        <h4 class="text-2xl font-bold text-dark-gray mb-4">品牌策略與數位行銷</h4>
+                        <p class="text-light-gray mb-8 flex-grow">透過 SEO、GEO 與數據分析，重新定位品牌，規劃具備轉換率的高端官方網站與行銷漏斗。</p>
+                        <a href="#contact" class="inline-flex items-center gap-2 text-sm font-semibold text-secondary hover:text-accent transition-colors mt-auto">
+                            預約品牌健檢 <i class="ph ph-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Service Card 3 -->
+                <div class="reveal-up delay-200 relative p-[1px] rounded-3xl bg-gradient-to-b from-gray-200 to-gray-50 overflow-hidden group hover:shadow-2xl hover:shadow-accent/10 transition-all duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-br from-accent to-primary opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="relative h-full bg-white/90 backdrop-blur-xl rounded-[23px] p-8 flex flex-col z-10">
+                        <div class="w-12 h-12 rounded-full bg-gray-100 group-hover:bg-accent/10 flex items-center justify-center text-dark-gray group-hover:text-accent transition-colors mb-6">
+                            <i class="ph ph-magic-wand text-2xl"></i>
+                        </div>
+                        <h4 class="text-2xl font-bold text-dark-gray mb-4">AI 工具導入與顧問</h4>
+                        <p class="text-light-gray mb-8 flex-grow">將 ChatGPT 等前沿 AI 技術無縫融入企業日常工作流程，協助建立自動化客服與內容產製系統。</p>
+                        <a href="#solutions" class="inline-flex items-center gap-2 text-sm font-semibold text-accent hover:text-primary transition-colors mt-auto">
+                            探索 AI 方案 <i class="ph ph-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Service Card 4 -->
+                <div class="reveal-up relative p-[1px] rounded-3xl bg-gradient-to-b from-gray-200 to-gray-50 overflow-hidden group hover:shadow-2xl transition-all duration-500 md:col-span-2 lg:col-span-1">
+                    <div class="absolute inset-0 bg-gradient-to-r from-gray-300 to-gray-400 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="relative h-full bg-white/90 backdrop-blur-xl rounded-[23px] p-8 flex flex-col z-10">
+                        <div class="w-12 h-12 rounded-full bg-gray-100 group-hover:bg-gray-200 flex items-center justify-center text-dark-gray transition-colors mb-6">
+                            <i class="ph ph-users-three text-2xl"></i>
+                        </div>
+                        <h4 class="text-2xl font-bold text-dark-gray mb-4">行銷團隊培訓顧問</h4>
+                        <p class="text-light-gray mb-8 flex-grow">幫助企業從零建立內部數位行銷團隊，傳授數據分析、SEO 實戰與內容行銷心法。</p>
+                    </div>
+                </div>
+
+                <!-- Service Card 5 (Wide) -->
+                <div class="reveal-up delay-100 relative p-[1px] rounded-3xl bg-gradient-to-b from-gray-200 to-gray-50 overflow-hidden group hover:shadow-2xl hover:shadow-blue-900/10 transition-all duration-500 md:col-span-2 lg:col-span-2">
+                    <div class="absolute inset-0 bg-gradient-to-r from-dark-gray to-gray-800 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="relative h-full bg-white/90 backdrop-blur-xl rounded-[23px] p-8 flex flex-col md:flex-row items-center gap-8 z-10 group-hover:bg-dark-gray/95 group-hover:text-white transition-colors duration-500">
+                        <div class="flex-grow">
+                            <div class="w-12 h-12 rounded-full bg-gray-100 group-hover:bg-white/10 flex items-center justify-center text-dark-gray group-hover:text-white transition-colors mb-6">
+                                <i class="ph ph-link text-2xl"></i>
+                            </div>
+                            <h4 class="text-2xl font-bold text-dark-gray group-hover:text-white mb-4 transition-colors">五金聯盟生態系</h4>
+                            <p class="text-light-gray group-hover:text-gray-300 transition-colors">串聯上下游供應鏈，透過數位平台資源共享，創造跨界合作與商業擴增的新契機。打造不只是單打獨鬥，而是生態共榮的護城河。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. KMOS ERP Spotlight -->
+    <section id="kmos" class="py-24 relative bg-dark-gray text-white overflow-hidden">
+        <!-- Abstract dark background elements -->
+        <div class="absolute inset-0 opacity-20 bg-grid mix-blend-overlay"></div>
+        <div class="absolute top-0 right-0 w-[800px] h-[800px] bg-primary/20 rounded-full blur-[120px] translate-x-1/2 -translate-y-1/2"></div>
+        
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="reveal-up">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 mb-6 text-sm backdrop-blur-md">
+                        <i class="ph ph-cpu text-accent"></i>
+                        <span>專屬雲端架構</span>
+                    </div>
+                    <h2 class="text-4xl md:text-5xl font-bold mb-6">五金客製化<br><span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400">KMOS ERP 雲端系統</span></h2>
+                    <p class="text-gray-400 text-lg mb-8 leading-relaxed">
+                        告別笨重的傳統進銷存。我們專為五金產業打造輕量、高擴充性的雲端管理架構，整合行動裝置操作，讓數據即時同步，營運效率倍增。
+                    </p>
+                    
+                    <ul class="space-y-4 mb-10">
+                        <li class="flex items-center gap-3">
+                            <i class="ph ph-check-circle text-accent text-xl"></i>
+                            <span class="text-gray-300">模組化設計，隨企業成長靈活擴充</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="ph ph-check-circle text-accent text-xl"></i>
+                            <span class="text-gray-300">雲端部署，隨時隨地掌握庫存與銷售</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="ph ph-check-circle text-accent text-xl"></i>
+                            <span class="text-gray-300">AI 數據預測，輔助採購決策</span>
+                        </li>
+                    </ul>
+
+                    <a href="#contact" class="inline-block bg-white text-dark-gray px-8 py-3 rounded-full font-medium hover:bg-gray-100 transition-colors shadow-lg shadow-white/10">
+                        申請系統演示
+                    </a>
+                </div>
+                
+                <!-- System Dashboard Mockup -->
+                <div class="reveal-up delay-200 relative lg:h-[500px]">
+                    <div class="absolute inset-0 bg-gradient-to-tr from-gray-800 to-gray-900 rounded-[24px] border border-white/10 shadow-2xl overflow-hidden flex flex-col">
+                        <!-- Mac-like header -->
+                        <div class="h-10 bg-black/40 border-b border-white/5 flex items-center px-4 gap-2">
+                            <div class="w-3 h-3 rounded-full bg-red-500/80"></div>
+                            <div class="w-3 h-3 rounded-full bg-yellow-500/80"></div>
+                            <div class="w-3 h-3 rounded-full bg-green-500/80"></div>
+                        </div>
+                        <!-- UI Content Mock -->
+                        <div class="p-6 flex-grow flex flex-col gap-4 relative">
+                            <div class="flex justify-between items-center mb-4">
+                                <div class="w-32 h-6 bg-white/10 rounded-md"></div>
+                                <div class="w-10 h-10 bg-white/10 rounded-full"></div>
+                            </div>
+                            <div class="grid grid-cols-3 gap-4 mb-4">
+                                <div class="h-24 bg-gradient-to-br from-blue-500/20 to-transparent border border-blue-500/30 rounded-xl p-4">
+                                    <div class="w-16 h-4 bg-white/20 rounded mb-4"></div>
+                                    <div class="w-24 h-8 bg-white/40 rounded"></div>
+                                </div>
+                                <div class="h-24 bg-gradient-to-br from-emerald-500/20 to-transparent border border-emerald-500/30 rounded-xl p-4">
+                                    <div class="w-16 h-4 bg-white/20 rounded mb-4"></div>
+                                    <div class="w-24 h-8 bg-white/40 rounded"></div>
+                                </div>
+                                <div class="h-24 bg-white/5 border border-white/10 rounded-xl p-4"></div>
+                            </div>
+                            <div class="flex-grow bg-white/5 border border-white/10 rounded-xl p-4 relative overflow-hidden">
+                                <!-- Abstract chart lines -->
+                                <svg class="absolute inset-0 w-full h-full opacity-50" preserveAspectRatio="none" viewBox="0 0 100 100">
+                                    <path d="M0,100 L20,80 L40,90 L60,40 L80,60 L100,20 L100,100 Z" fill="rgba(37, 99, 235, 0.1)"></path>
+                                    <path d="M0,100 L20,80 L40,90 L60,40 L80,60 L100,20" fill="none" stroke="#60a5fa" stroke-width="2"></path>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. Success Cases -->
+    <section id="cases" class="py-24 relative">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-16 reveal-up">
+                <h2 class="text-sm font-bold tracking-widest text-primary uppercase mb-4">客戶成功案例</h2>
+                <h3 class="text-3xl md:text-4xl font-bold text-dark-gray">我們協助客戶達成的里程碑</h3>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Case 1 -->
+                <div class="reveal-up glass-card p-10 rounded-[32px]">
+                    <div class="flex justify-between items-start mb-8">
+                        <div>
+                            <p class="text-sm font-semibold text-primary mb-1">某傳統五金製造廠</p>
+                            <h4 class="text-2xl font-bold text-dark-gray">ERP 數位轉型導入</h4>
+                        </div>
+                        <i class="ph ph-arrow-up-right text-2xl text-light-gray"></i>
+                    </div>
+                    <p class="text-light-gray mb-8">告別紙本與 Excel 記錄，導入 KMOS 後，庫存準確率大幅提升，呆滯料庫存減少，管理成本顯著降低。</p>
+                    <div class="flex gap-6 border-t border-gray-200 pt-6">
+                        <div>
+                            <div class="text-3xl font-bold text-dark-gray mb-1">98<span class="text-lg text-primary">%</span></div>
+                            <div class="text-xs text-light-gray">庫存準確率</div>
+                        </div>
+                        <div>
+                            <div class="text-3xl font-bold text-dark-gray mb-1">40<span class="text-lg text-secondary">%</span></div>
+                            <div class="text-xs text-light-gray">作業時間節省</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Case 2 -->
+                <div class="reveal-up delay-100 glass-card p-10 rounded-[32px]">
+                    <div class="flex justify-between items-start mb-8">
+                        <div>
+                            <p class="text-sm font-semibold text-secondary mb-1">B2B 機械設備商</p>
+                            <h4 class="text-2xl font-bold text-dark-gray">品牌網站與 SEO 重塑</h4>
+                        </div>
+                        <i class="ph ph-arrow-up-right text-2xl text-light-gray"></i>
+                    </div>
+                    <p class="text-light-gray mb-8">重新建立品牌架構與國際級官方網站，佈局 SEO 關鍵字，成功獲得海外買主主動詢價，打通數位開發渠道。</p>
+                    <div class="flex gap-6 border-t border-gray-200 pt-6">
+                        <div>
+                            <div class="text-3xl font-bold text-dark-gray mb-1">300<span class="text-lg text-primary">%</span></div>
+                            <div class="text-xs text-light-gray">自然流量增長</div>
+                        </div>
+                        <div>
+                            <div class="text-3xl font-bold text-dark-gray mb-1">5<span class="text-lg text-secondary">x</span></div>
+                            <div class="text-xs text-light-gray">詢價單轉換率</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 9. Digital Transformation Process -->
+    <section class="py-24 bg-surface/50 border-y border-gray-100 relative">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-16 reveal-up">
+                <h2 class="text-sm font-bold tracking-widest text-primary uppercase mb-4">導入流程</h2>
+                <h3 class="text-3xl md:text-4xl font-bold text-dark-gray">數位轉型標準路徑</h3>
+            </div>
+            
+            <div class="relative max-w-4xl mx-auto">
+                <!-- Line -->
+                <div class="hidden md:block absolute top-1/2 left-0 w-full h-[2px] bg-gradient-to-r from-gray-200 via-primary/50 to-gray-200 -translate-y-1/2 z-0"></div>
+                
+                <div class="grid md:grid-cols-4 gap-8 relative z-10">
+                    <div class="reveal-up flex flex-col items-center text-center">
+                        <div class="w-16 h-16 rounded-2xl bg-white border border-gray-200 shadow-lg flex items-center justify-center text-primary text-xl font-bold mb-4">1</div>
+                        <h4 class="text-lg font-bold text-dark-gray mb-2">深度診斷</h4>
+                        <p class="text-sm text-light-gray">企業痛點訪談與營運現況數據分析</p>
+                    </div>
+                    <div class="reveal-up delay-100 flex flex-col items-center text-center">
+                        <div class="w-16 h-16 rounded-2xl bg-white border border-gray-200 shadow-lg flex items-center justify-center text-primary text-xl font-bold mb-4">2</div>
+                        <h4 class="text-lg font-bold text-dark-gray mb-2">策略藍圖</h4>
+                        <p class="text-sm text-light-gray">量身定制數位轉型計畫與系統架構</p>
+                    </div>
+                    <div class="reveal-up delay-200 flex flex-col items-center text-center">
+                        <div class="w-16 h-16 rounded-2xl bg-white border border-gray-200 shadow-lg flex items-center justify-center text-primary text-xl font-bold mb-4">3</div>
+                        <h4 class="text-lg font-bold text-dark-gray mb-2">敏捷導入</h4>
+                        <p class="text-sm text-light-gray">ERP 系統建置或行銷工具無縫整合</p>
+                    </div>
+                    <div class="reveal-up delay-300 flex flex-col items-center text-center">
+                        <div class="w-16 h-16 rounded-2xl bg-white border border-gray-200 shadow-lg flex items-center justify-center text-primary text-xl font-bold mb-4">4</div>
+                        <h4 class="text-lg font-bold text-dark-gray mb-2">持續優化</h4>
+                        <p class="text-sm text-light-gray">顧問陪伴式成長與數據監測迭代</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 11. FAQ -->
+    <section class="py-24 relative">
+        <div class="max-w-3xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-16 reveal-up">
+                <h2 class="text-3xl md:text-4xl font-bold text-dark-gray mb-4">常見問題</h2>
+                <p class="text-light-gray">關於數位轉型與我們服務的常見疑問</p>
+            </div>
+            
+            <div class="space-y-4 reveal-up delay-100" id="faq-container">
+                <!-- FAQ Item -->
+                <div class="glass-card rounded-2xl overflow-hidden faq-item cursor-pointer">
+                    <div class="px-6 py-5 flex justify-between items-center faq-header">
+                        <h4 class="text-lg font-medium text-dark-gray">我們是傳統製造業，適合導入 AI 或數位轉型嗎？</h4>
+                        <i class="ph ph-plus text-primary transition-transform duration-300 faq-icon"></i>
+                    </div>
+                    <div class="px-6 pb-5 text-light-gray hidden faq-content text-sm leading-relaxed">
+                        非常適合。事實上，傳統產業正是數位轉型紅利最大的領域。我們會從最基礎的數據收集（如無紙化、ERP導入）開始，建立穩固基礎後再逐步導入進階的自動化與 AI 輔助，確保轉型過程平穩且能看見實質效益。
+                    </div>
+                </div>
+                
+                <div class="glass-card rounded-2xl overflow-hidden faq-item cursor-pointer">
+                    <div class="px-6 py-5 flex justify-between items-center faq-header">
+                        <h4 class="text-lg font-medium text-dark-gray">KMOS ERP 與市面上的套裝軟體有何不同？</h4>
+                        <i class="ph ph-plus text-primary transition-transform duration-300 faq-icon"></i>
+                    </div>
+                    <div class="px-6 pb-5 text-light-gray hidden faq-content text-sm leading-relaxed">
+                        KMOS 專為五金與製造產業高度客製。有別於傳統套裝軟體僵化且介面老舊，KMOS 採用現代化雲端架構、直覺的 UI 設計，並且能根據您的獨特商業流程進行模組擴充，而非要求企業去適應系統。
+                    </div>
+                </div>
+
+                <div class="glass-card rounded-2xl overflow-hidden faq-item cursor-pointer">
+                    <div class="px-6 py-5 flex justify-between items-center faq-header">
+                        <h4 class="text-lg font-medium text-dark-gray">顧問服務的合作模式為何？</h4>
+                        <i class="ph ph-plus text-primary transition-transform duration-300 faq-icon"></i>
+                    </div>
+                    <div class="px-6 pb-5 text-light-gray hidden faq-content text-sm leading-relaxed">
+                        我們提供專案制與長期陪伴制。前期通常透過深度專案（如網站建置、系統導入）建立基礎，後期則轉為長期顧問約，每月定期會議檢視數據表現並提供優化策略，確保轉型成果持續發酵。
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 12. Core Products & Technology Solutions -->
+    <section id="solutions" class="py-24 relative border-y border-gray-100 bg-surface/50">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-14 reveal-up">
+                <h2 class="text-sm font-bold tracking-widest text-primary uppercase mb-4">核心產品與技術解決方案</h2>
+                <h3 class="text-3xl md:text-4xl font-bold text-dark-gray">整合式數位服務與專案落地</h3>
+            </div>
+
+            <div class="max-w-4xl mx-auto reveal-up">
+                <div class="glass-card rounded-[32px] p-8 md:p-10">
+                    <div class="flex flex-col md:flex-row items-start gap-6">
+                        <div class="w-20 h-20 rounded-3xl bg-gradient-to-br from-primary/10 to-secondary/10 border border-primary/10 flex items-center justify-center text-primary shrink-0">
+                            <i class="fa-brands fa-github text-4xl"></i>
+                        </div>
+
+                        <div class="flex-1">
+                            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-4">
+                                <h4 class="text-2xl md:text-3xl font-bold text-dark-gray">KMOS 線上預約系統</h4>
+                                <a href="https://mowang-1.ai.studio/" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/5 text-primary font-semibold hover:bg-primary hover:text-white transition-all duration-300">
+                                    開啟系統
+                                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                </a>
+                            </div>
+
+                            <p class="text-light-gray text-lg leading-relaxed mb-5">能夠網路預約</p>
+
+                            <div class="flex flex-wrap gap-3 mb-6">
+                                <span class="px-3 py-1 rounded-full bg-blue-50 text-blue-700 text-sm font-medium">線上預約</span>
+                                <span class="px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 text-sm font-medium">快速接客</span>
+                                <span class="px-3 py-1 rounded-full bg-violet-50 text-violet-700 text-sm font-medium">雲端整合</span>
+                            </div>
+
+                            <a href="https://mowang-1.ai.studio/" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-sm font-semibold text-secondary hover:text-primary transition-colors">
+                                立即查看連結
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 12. External Dependencies & Form -->
+    <section id="connect" class="py-24 relative border-b border-gray-100 bg-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-14 reveal-up">
+                <h2 class="text-sm font-bold tracking-widest text-primary uppercase mb-4">Dependencies</h2>
+                <h3 class="text-3xl md:text-4xl font-bold text-dark-gray">外部連結與需求表單</h3>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6 reveal-up">
+                <a href="https://lin.ee/TBXfp0O" target="_blank" rel="noopener" class="group block glass-card rounded-[28px] p-6 hover:border-[#06C755]/30 transition-all duration-300">
+                    <div class="flex items-center justify-between mb-5">
+                        <div class="w-14 h-14 rounded-2xl bg-[#06C755]/10 text-[#06C755] flex items-center justify-center text-2xl">
+                            <i class="fa-brands fa-line"></i>
+                        </div>
+                        <span class="text-[10px] font-bold tracking-[0.2em] text-light-gray uppercase">Dependency</span>
+                    </div>
+                    <h4 class="text-xl font-bold text-dark-gray mb-2">LINE</h4>
+                    <p class="text-sm text-light-gray leading-relaxed mb-4">直接與我們聯繫，獲取最新消息與快速回覆。</p>
+                    <span class="inline-flex items-center gap-2 text-sm font-semibold text-[#06C755] group-hover:text-primary transition-colors">
+                        進入官方 LINE
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </span>
+                </a>
+
+                <a href="https://www.instagram.com/ink.hope1/" target="_blank" rel="noopener" class="group block glass-card rounded-[28px] p-6 hover:border-[#E1306C]/30 transition-all duration-300">
+                    <div class="flex items-center justify-between mb-5">
+                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] text-white flex items-center justify-center text-2xl shadow-lg shadow-pink-200/50">
+                            <i class="fa-brands fa-instagram"></i>
+                        </div>
+                        <span class="text-[10px] font-bold tracking-[0.2em] text-light-gray uppercase">Dependency</span>
+                    </div>
+                    <h4 class="text-xl font-bold text-dark-gray mb-2">Instagram</h4>
+                    <p class="text-sm text-light-gray leading-relaxed mb-4">追蹤品牌動態、案例分享與專案更新內容。</p>
+                    <span class="inline-flex items-center gap-2 text-sm font-semibold text-[#E1306C] group-hover:text-primary transition-colors">
+                        前往 IG
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </span>
+                </a>
+
+                <a href="https://forms.gle/fnhdbp39Z7h4BvUZA" target="_blank" rel="noopener" class="group block glass-card rounded-[28px] p-6 hover:border-primary/30 transition-all duration-300">
+                    <div class="flex items-center justify-between mb-5">
+                        <div class="w-14 h-14 rounded-2xl bg-primary/10 text-primary flex items-center justify-center text-2xl">
+                            <i class="fa-regular fa-file-lines"></i>
+                        </div>
+                        <span class="text-[10px] font-bold tracking-[0.2em] text-light-gray uppercase">Form</span>
+                    </div>
+                    <h4 class="text-xl font-bold text-dark-gray mb-2">填寫需求表單</h4>
+                    <p class="text-sm text-light-gray leading-relaxed mb-4">告訴我們您的需求與目標，我們將為您提供適合的解決方案。</p>
+                    <span class="inline-flex items-center gap-2 text-sm font-semibold text-primary group-hover:text-secondary transition-colors">
+                        開始填寫
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 12. CTA / 13. Contact -->
+    <section id="contact" class="py-32 relative overflow-hidden">
+        <div class="absolute inset-0 bg-primary/5"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] h-[80vw] md:w-[40vw] md:h-[40vw] bg-primary/10 rounded-full blur-[100px]"></div>
+        
+        <div class="max-w-4xl mx-auto px-6 lg:px-8 relative z-10 text-center reveal-up">
+            <h2 class="text-4xl md:text-6xl font-bold text-dark-gray mb-8">準備好啟動您的<br>品牌進化之旅了嗎？</h2>
+            <p class="text-xl text-light-gray mb-12 max-w-2xl mx-auto">
+                留下您的聯絡資訊或直接預約時間，由我們的資深顧問為您進行初步的免費數位轉型評估。
+            </p>
+            
+            <a href="https://calendar.app.google/6yYzpBV9ucwPVd788" target="_blank" class="group relative overflow-hidden inline-flex items-center justify-center bg-dark-gray text-white rounded-full px-10 py-5 text-lg font-bold shadow-2xl shadow-dark-gray/20 hover:scale-105 transition-all duration-300">
+                <span class="absolute inset-0 w-full h-full bg-gradient-to-r from-primary to-secondary opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0"></span>
+                <span class="relative z-10 flex items-center gap-3">
+                    立即預約顧問諮詢
+                    <i class="ph ph-calendar-plus text-2xl"></i>
+                </span>
+            </a>
+            
+            <p class="mt-8 text-sm text-light-gray">
+                或寄信至 <a href="mailto:hello@mowang.tw" class="text-primary hover:underline">hello@mowang.tw</a>
+            </p>
+        </div>
+    </section>
+
+    <!-- 14. Footer -->
+    <footer class="border-t border-gray-100 bg-white py-12 relative z-10">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex items-center gap-2">
+                <div class="w-6 h-6 rounded bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-white font-bold text-xs">M</div>
+                <span class="font-bold text-dark-gray">墨望行銷</span>
+                <span class="text-gray-300 mx-2">|</span>
+                <span class="text-sm text-light-gray">科技驅動品牌成長</span>
+            </div>
+            
+            <div class="flex gap-6 text-sm text-light-gray">
+                <a href="#" class="hover:text-primary transition-colors">隱私權政策</a>
+                <a href="#" class="hover:text-primary transition-colors">服務條款</a>
+            </div>
+            
+            <div class="text-sm text-gray-400">
+                &copy; 2026 Mowang Marketing. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // 1. Typewriter Effect
+            const typeWriterElement = document.getElementById('hero-typewriter');
+            const textToType = "AI智慧科技驅動品牌成長";
+            let i = 0;
+            const typingSpeed = 70; // ms per character
+
+            function typeWriter() {
+                if (i < textToType.length) {
+                    const char = textToType.charAt(i);
+                    if (char === '\n') {
+                        typeWriterElement.innerHTML += '<br>';
+                    } else {
+                        typeWriterElement.innerHTML += char;
+                    }
+                    i++;
+                    setTimeout(typeWriter, typingSpeed);
+                }
+            }
+            // Start typing after a short delay
+            setTimeout(typeWriter, 500);
+
+
+            // 2. Navbar Scroll Effect & Mobile Menu
+            const navbar = document.getElementById('navbar');
+            const navContainer = document.getElementById('nav-container');
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuIcon = document.getElementById('menu-icon');
+            
+            let isMenuOpen = false;
+
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.remove('pt-6');
+                    navbar.classList.add('pt-2');
+                    navContainer.classList.add('shadow-md', 'bg-white/80');
+                    navContainer.classList.remove('bg-white/65');
+                } else {
+                    navbar.classList.add('pt-6');
+                    navbar.classList.remove('pt-2');
+                    navContainer.classList.remove('shadow-md', 'bg-white/80');
+                    navContainer.classList.add('bg-white/65');
+                }
+            });
+
+            // Mobile menu toggle
+            mobileMenuBtn.addEventListener('click', () => {
+                isMenuOpen = !isMenuOpen;
+                if (isMenuOpen) {
+                    mobileMenu.classList.remove('opacity-0', 'pointer-events-none', '-translate-y-4');
+                    mobileMenu.classList.add('opacity-100', 'pointer-events-auto', 'translate-y-0');
+                    menuIcon.classList.remove('ph-list');
+                    menuIcon.classList.add('ph-x');
+                } else {
+                    closeMobileMenu();
+                }
+            });
+
+            function closeMobileMenu() {
+                isMenuOpen = false;
+                mobileMenu.classList.add('opacity-0', 'pointer-events-none', '-translate-y-4');
+                mobileMenu.classList.remove('opacity-100', 'pointer-events-auto', 'translate-y-0');
+                menuIcon.classList.remove('ph-x');
+                menuIcon.classList.add('ph-list');
+            }
+
+            // Close mobile menu on link click
+            document.querySelectorAll('.mobile-link').forEach(link => {
+                link.addEventListener('click', closeMobileMenu);
+            });
+
+
+            // 3. Scroll Reveal Animation (Intersection Observer)
+            const revealElements = document.querySelectorAll('.reveal-up');
+            
+            const revealOptions = {
+                threshold: 0.1,
+                rootMargin: "0px 0px -50px 0px"
+            };
+
+            const revealObserver = new IntersectionObserver(function(entries, observer) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, revealOptions);
+
+            revealElements.forEach(el => {
+                revealObserver.observe(el);
+            });
+
+
+            // 4. FAQ Accordion
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const header = item.querySelector('.faq-header');
+                const content = item.querySelector('.faq-content');
+                const icon = item.querySelector('.faq-icon');
+                
+                header.addEventListener('click', () => {
+                    const isOpen = !content.classList.contains('hidden');
+                    
+                    // Close all others
+                    faqItems.forEach(otherItem => {
+                        otherItem.querySelector('.faq-content').classList.add('hidden');
+                        otherItem.querySelector('.faq-icon').style.transform = 'rotate(0deg)';
+                    });
+
+                    // Toggle current
+                    if (!isOpen) {
+                        content.classList.remove('hidden');
+                        icon.style.transform = 'rotate(45deg)';
+                    }
+                });
+            });
+
+
+            // 5. Canvas Background (AI Network / Particles)
+            const canvas = document.getElementById('networkCanvas');
+            const ctx = canvas.getContext('2d');
+            
+            let width = canvas.width = window.innerWidth;
+            let height = canvas.height = window.innerHeight;
+            
+            let particles = [];
+            const particleCount = Math.min(window.innerWidth / 15, 80); // Responsive count
+            const connectionDistance = 150;
+
+            class Particle {
+                constructor() {
+                    this.x = Math.random() * width;
+                    this.y = Math.random() * height;
+                    this.vx = (Math.random() - 0.5) * 0.5;
+                    this.vy = (Math.random() - 0.5) * 0.5;
+                    this.radius = Math.random() * 1.5 + 0.5;
+                }
+
+                update() {
+                    this.x += this.vx;
+                    this.y += this.vy;
+
+                    if (this.x < 0 || this.x > width) this.vx = -this.vx;
+                    if (this.y < 0 || this.y > height) this.vy = -this.vy;
+                }
+
+                draw() {
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                    ctx.fillStyle = 'rgba(37, 99, 235, 0.4)'; // Primary color faint
+                    ctx.fill();
+                }
+            }
+
+            function initParticles() {
+                particles = [];
+                for (let i = 0; i < particleCount; i++) {
+                    particles.push(new Particle());
+                }
+            }
+
+            function animateParticles() {
+                ctx.clearRect(0, 0, width, height);
+
+                for (let i = 0; i < particles.length; i++) {
+                    particles[i].update();
+                    particles[i].draw();
+
+                    for (let j = i; j < particles.length; j++) {
+                        const dx = particles[i].x - particles[j].x;
+                        const dy = particles[i].y - particles[j].y;
+                        const distance = Math.sqrt(dx * dx + dy * dy);
+
+                        if (distance < connectionDistance) {
+                            ctx.beginPath();
+                            ctx.moveTo(particles[i].x, particles[i].y);
+                            ctx.lineTo(particles[j].x, particles[j].y);
+                            // Opacity based on distance
+                            const opacity = 1 - (distance / connectionDistance);
+                            ctx.strokeStyle = `rgba(124, 58, 237, ${opacity * 0.15})`; // Secondary color very faint
+                            ctx.lineWidth = 0.5;
+                            ctx.stroke();
+                        }
+                    }
+                }
+                requestAnimationFrame(animateParticles);
+            }
+
+            // Handle Resize
+            let resizeTimeout;
+            window.addEventListener('resize', () => {
+                clearTimeout(resizeTimeout);
+                resizeTimeout = setTimeout(() => {
+                    width = canvas.width = window.innerWidth;
+                    height = canvas.height = window.innerHeight;
+                    initParticles();
+                }, 200);
+            });
+
+            // Start Canvas
+            initParticles();
+            animateParticles();
+        });
+    </script>
+</body>
+</html>
